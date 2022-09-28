@@ -23,6 +23,7 @@ while True:
     filter_comments_to_tweet(comments)
     print('Done......................Sleep mode activated ')
 
-    time.sleep(60)
+    # Sleep for 30secs, then continue
+    time.sleep(30)
 
     
