@@ -2,6 +2,8 @@ import os
 import tweepy
 from dotenv import load_dotenv
 
+from utils.date import now
+
 load_dotenv()
 
 file = os.getcwd() + '/reddit.png'
@@ -30,6 +32,6 @@ def tweet(message):
            
     print(response)                               
     print(
-        'Done Tweeting...............................'
+        'Done Tweeting...............................', now()
     )
 

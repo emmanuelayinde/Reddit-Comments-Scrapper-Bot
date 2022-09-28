@@ -1,6 +1,8 @@
 import time
 import requests
 
+from utils.date import now
+
 users = [
     "HS_Celestalon",
     "ChakkiHS",
@@ -40,7 +42,7 @@ def parse_data(data):
             else: 
                 print(f'The subreddit is not supported') 
 
-    print('Done parsing data..............')            
+    print('Done parsing data..............', now())            
 
     # return recent_comments 
 

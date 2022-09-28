@@ -1,4 +1,5 @@
 import os
+from utils.date import now
 from utils.formatter import format_description_text
 
 from utils.tweet import tweet
@@ -49,4 +50,4 @@ def filter_comments_to_tweet(comments):
             text = format_comment(comment)
             print(text)
             tweet(text)
-    print('Done...................................###################################')
+    print('Done...................................###################################', now())
