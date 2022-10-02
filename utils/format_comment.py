@@ -18,9 +18,9 @@ def format_comment(comment):
     # formatted_comment_text = format_description_text(comment_text, len(t_len))
     # text = f'{title}\n\n🔴 {comment_post_title}\n🕵️‍♂️{comment_author}\n📝"{formatted_comment_text}"\n\n🌐{comment_post_url}'
 
-    t_len = f'{title}\n\n🔴{comment_post_title}\n🕵️‍♂️{comment_author}\n📝\n\n🌐https://www.reddit.com{comment_url}'
+    t_len = f'{title}\n\n🔴 {comment_post_title}\n🕵️‍♂️ {comment_author}\n📝 \n\n🌐 https://www.reddit.com{comment_url}'
     formatted_comment_text = format_description_text(comment_text, len(t_len))
-    text = f'{title}\n\n🔴{comment_post_title}\n🕵️‍♂️{comment_author}\n📝"{formatted_comment_text}"\n\n🌐https://www.reddit.com{comment_url}'
+    text = f'{title}\n\n🔴 {comment_post_title}\n🕵️‍♂️ {comment_author}\n📝 {formatted_comment_text}\n\n🌐 https://www.reddit.com{comment_url}'
 
     return text
 
