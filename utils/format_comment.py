@@ -7,18 +7,22 @@ file_path = os.getcwd() + '/data/tweeted_comments.txt'
 
 
 def format_comment(comment):
-    title = "📢--Reddit Dev Comment Spotted--📢"
+    title = "📢 Reddit comment spotted 📢"
     comment_author = comment['author']
     comment_text = comment['comment']
     comment_post_title = comment['title']
-    comment_post_url = comment['post_url']
+    # comment_post_url = comment['post_url']
+    comment_url = comment['comment_url']
 
-    t_len = f'{title}\n\n🔴 {comment_post_title}\n🕵️‍♂️{comment_author}\n📝\n\n🌐{comment_post_url}'
+    # t_len = f'{title}\n\n🔴 {comment_post_title}\n🕵️‍♂️{comment_author}\n📝\n\n🌐{comment_post_url}'
+    # formatted_comment_text = format_description_text(comment_text, len(t_len))
+    # text = f'{title}\n\n🔴 {comment_post_title}\n🕵️‍♂️{comment_author}\n📝"{formatted_comment_text}"\n\n🌐{comment_post_url}'
+
+    t_len = f'{title}\n\n🔴{comment_post_title}\n🕵️‍♂️{comment_author}\n📝\n\n🌐https://www.reddit.com{comment_url}'
     formatted_comment_text = format_description_text(comment_text, len(t_len))
-    text = f'{title}\n\n🔴 {comment_post_title}\n🕵️‍♂️{comment_author}\n📝"{formatted_comment_text}"\n\n🌐{comment_post_url}'
+    text = f'{title}\n\n🔴{comment_post_title}\n🕵️‍♂️{comment_author}\n📝"{formatted_comment_text}"\n\n🌐https://www.reddit.com{comment_url}'
 
     return text
-
 
 def check_if_tweeted(comment_id):
     t = False
@@ -49,5 +53,5 @@ def filter_comments_to_tweet(comments):
             write_comment_id(comment['id'])
             text = format_comment(comment)
             print(text)
-            tweet(text)
+            tweet(text)        
     print('Done...................................###################################', now())

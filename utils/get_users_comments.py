@@ -17,12 +17,16 @@ users = [
 subreddit_list = ["hearthstone", "bobstavern", "customhearthstone"]
 recent_comments = []
 
-# { id, subreddit, author, link_title, body, link_permalink }
+# { id, subreddit, author, link_title, body, link_permalink, permalink }
+
+
 def get_comments(user):
-    print(f'Getting recent comments from user - {user}........')   
-    r = requests.get(f'https://www.reddit.com/user/{user}/comments.json', headers = {'User-agent': 'reddit>comments>botv1.0'}, params = { 'sort': "top", 't': "month" })
+    print(f'Getting recent comments from user - {user}........')
+    r = requests.get(f'https://www.reddit.com/user/{user}/comments.json', headers={
+                     'User-agent': 'reddit>comments>botv1.0'}, params={'sort': "top", 't': "month"})
     data = r.json()
     return data
+
 
 def parse_data(data):
     c = data['data']['children']
@@ -36,15 +40,16 @@ def parse_data(data):
                     'author': d['data']['author'],
                     'title': d['data']['link_title'],
                     'comment': d['data']['body'],
-                    'post_url': d['data']['link_permalink']
+                    'post_url': d['data']['link_permalink'],
+                    'comment_url': d['data']['permalink']
                 }
                 recent_comments.append(comment)
-            else: 
-                print(f'The subreddit is not supported') 
+            else:
+                print(f'The subreddit is not supported')
 
-    print('Done parsing data..............', now())            
+    print('Done parsing data..............', now())
 
-    # return recent_comments 
+    # return recent_comments
 
 
 def get_comments_from_all_users(users):
@@ -55,7 +60,7 @@ def get_comments_from_all_users(users):
         parse_data(user_comments)
         time.sleep(1)
 
-    return recent_comments     
+    return recent_comments
 
 
 # print(get_comments_from_all_users(users))
