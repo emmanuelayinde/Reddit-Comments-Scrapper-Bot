@@ -27,12 +27,9 @@ def format_comment(comment):
 def check_if_tweeted(comment_id):
     t = False
     with open(file_path) as f:
-        for line in f:
-            if line.strip() == comment_id:
-                print(
-                    f'Comment with the id "{comment_id}" already tweeted... ')
-                t = True
-                break
+        if comment_id in f.read():
+            print(f'Comment with the id "{comment_id}" already tweeted... ')
+            t = True             
     return t
 
 

@@ -23,7 +23,7 @@ recent_comments = []
 def get_comments(user):
     print(f'Getting recent comments from user - {user}........')
     r = requests.get(f'https://www.reddit.com/user/{user}/comments.json', headers={
-                     'User-agent': 'reddit>comments>botv1.0'}, params={'sort': "top", 't': "month"})
+                     'User-agent': 'reddit>comments>botv1.0'}, params={'sort': "top", 't': "hour"})
     data = r.json()
     return data
 
