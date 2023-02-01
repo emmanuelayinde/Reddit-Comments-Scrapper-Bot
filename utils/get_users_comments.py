@@ -14,7 +14,7 @@ users = [
     "cmdylux",
     "Kaeyoh",
 ]
-subreddit_list = ["hearthstone", "bobstavern", "customhearthstone"]
+subreddit_list = ["hearthstone", "bobstavern", "customhearthstone", "custom hearthstone"]
 recent_comments = []
 
 # { id, subreddit, author, link_title, body, link_permalink, permalink }
@@ -22,16 +22,19 @@ recent_comments = []
 
 def get_comments(user):
     print(f'Getting recent comments from user - {user}........')
-    r = requests.get(f'https://www.reddit.com/user/{user}/comments.json', headers={
-                     'User-agent': 'reddit>comments>botv1.0'}, params={'sort': "top", 't': "hour"})
+    url = f'https://www.reddit.com/user/{user}/comments.json'
+    print(url)
+    r = requests.get(url, headers={
+                     'User-agent': 'reddit>comments>botv1.0'}, params={'sort': "top", 't': "week"})
     data = r.json()
+    print("Scraped Data .............", data)
     return data
 
 
 def parse_data(data):
     c = data['data']['children']
 
-    if len(data['data']['children']) != 0:
+    if len(c) != 0:
         for d in c:
             if d['data']['subreddit'] in subreddit_list:
                 comment = {
@@ -53,12 +56,12 @@ def parse_data(data):
 
 
 def get_comments_from_all_users(users):
-    print(len(users))
+    print("Total Users", len(users))
     for user in users:
         user_comments = get_comments(user)
-        time.sleep(5)
+        # time.sleep(1)
         parse_data(user_comments)
-        time.sleep(1)
+        # time.sleep(1)
 
     return recent_comments
 

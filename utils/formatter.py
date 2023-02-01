@@ -2,9 +2,9 @@
 def format_description_text(description, total_len = None):
 
     if total_len == None:
-        max = 130
+        max = 120
     else:
-        max = 275 - total_len  
+        max = 270 - total_len  
 
     print(max)    
 

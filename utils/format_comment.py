@@ -42,10 +42,11 @@ def filter_comments_to_tweet(comments):
     for comment in comments:
         tweeted = check_if_tweeted(comment['id'])
         if tweeted:
+            print("Tweeted......................")
             continue
         else:
             write_comment_id(comment['id'])
             text = format_comment(comment)
-            print(text)
-            tweet(text)        
+            print('Tweet.....................',text)
+            # tweet(text)        
     print('Done...................................###################################', now())
